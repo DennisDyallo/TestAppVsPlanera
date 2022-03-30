@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<OpenApiReference Include="TablaApi.json" CodeGenerator="NSwagCSharp" Namespace="TestAppVsPlanera.TablaApi">
+			<OutputPath>TablaApiClient.cs</OutputPath>
+			<ClassName>TablaApiClient</ClassName>
+			<Options>/OperationGenerationMode:SingleClientFromOperationId</Options>
+		</OpenApiReference>
+		<OpenApiReference Include="UtbudApi.json" CodeGenerator="NSwagCSharp" Namespace="UtbudApi">
+			<OutputPath>UtbudApiClient.cs</OutputPath>
+			<ClassName>UtbudApiClient</ClassName>
+			<Options>/OperationGenerationMode:SingleClientFromOperationId /AdditionalNamespaceUsages:TestAppVsPlanera.TablaApi</Options>
+		</OpenApiReference>
+	</ItemGroup>
+  <!--<ItemGroup>
+    <OpenApiReference Include="..\TablaApi.json" CodeGenerator="NSwagCSharp" Link="OpenAPIs\TablaApi.json" />
+    <OpenApiReference Include="..\UtbudApi.json" CodeGenerator="NSwagCSharp" Link="OpenAPIs\UtbudApi.json" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="NSwag.ApiDescription.Client" Version="13.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
